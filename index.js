@@ -30,6 +30,15 @@ function playRound (playerSelection, computerSelection) {
 const playerSelection = 'RocK';
 const computerSelection = getComputerChoice();
 
-console.log(playRound(playerSelection, computerSelection));
+//console.log(playRound(playerSelection, computerSelection));
 
-console.log('adding to git repo');
+function game () {
+  let playerScore = 0;
+  let computerScore = 0;
+  for (let i = 0; i < 5; i++) {
+    let result = playRound(playerSelection, computerSelection);
+    console.log(result);
+  }
+}
+
+console.log(game());
