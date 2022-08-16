@@ -12,8 +12,13 @@ function playerChoice () {
   input =  input.toLowerCase();
   //checking to make sure input is valid
   let check = validateInput(input);
-  if (check) {
-    console.log(input);
+  while (check === false) {
+    input = prompt('Type Rock, Paper, or Scissors. Spelling must be exact, but capitalization does not matter.');
+    while (input === null) {
+      input = prompt('Type Rock, Paper, or Scissors');
+    }
+    input = input.toLowerCase();
+    check = validateInput(input);
   }
 }
 
@@ -30,9 +35,8 @@ function game () {
 function validateInput(choice) {
   if (choices.includes(choice)) {
     return true;
-  } else {
-    return false;
   }
+  return false;
 }
 
 game();
