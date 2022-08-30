@@ -1,11 +1,15 @@
 const choices = ['rock', 'paper', 'scissors'];
+const winners = [];
 
+//get a random choice from computer
 function getComputerChoice() {
   return choices[Math.floor(Math.random() * choices.length)];
 }
 
+//use prompt to get player choice
 function playerChoice () {
   let input = prompt('Type Rock, Paper, or Scissors');
+  console.log('Player: ', input);
   while (input === null) {
     input = prompt('Type Rock, Paper, or Scissors');
   }
@@ -20,25 +24,48 @@ function playerChoice () {
     input = input.toLowerCase();
     check = validateInput(input);
   }
+  return input;
 }
 
+//play a single round of rps
 function playRound () {
   const playerSelection = playerChoice();
   const computerSelection = getComputerChoice();
+  console.log('Computer: ', computerSelection);
+  const winner = determineWinner(playerSelection, computerSelection);
+  console.log('Winner: ', winner);
+  winners.push(winner);
 }
 
+//
 function game () {
-  playRound();
+  for (var i = 0; i <= 5; i++) {
+    playRound();
+  }
 }
 
 //validating input function
 function validateInput(choice) {
-  if (choices.includes(choice)) {
-    return true;
-  }
-  return false;
+  return choices.includes(choice);
 }
 
+function determineWinner (choiceP, choiceC) {
+  if (choiceP === choiceC) {
+    return 'Tie';
+  } else if ((choiceP === 'rock' && choiceC === 'scissors') ||
+  (choiceP === 'paper' && choiceC === 'rock') ||
+  (choiceP === 'scissors' && choiceC === 'paper')) {
+    return 'Player';
+  } else {
+    return 'Computer';
+  }
+}
+
+function logWins() {
+  console.log(winners);
+}
+
+//initiate game/prompt upon page load
 game();
 
 // function playRound (playerSelection, computerSelection) {
