@@ -42,6 +42,7 @@ function game () {
   for (var i = 1; i <= 5; i++) {
     playRound(i);
   }
+  document.querySelector('button').textContent = 'Play New Game';
   logWins();
 }
 
@@ -71,13 +72,13 @@ function logWins() {
   console.log('Computer Wins: ', computerWins);
   console.log('Ties: ', ties);
 
-  // if (playerWins > computerWins) {
-  //   alert('You win!!!');
-  // } else if (playerWins < computerWins) {
-  //   alert('The Computer wins, better luck next time teeHee.')
-  // } else {
-  //   alert('Its a tie, please play again...')
-  // }
+  if (playerWins > computerWins) {
+    alert('You win!!!');
+  } else if (playerWins < computerWins) {
+    alert('The Computer wins, better luck next time teeHee.')
+  } else {
+    alert('Its a tie, please play again...')
+  }
 }
 
 function logRound(playerChoice, computerChoice, winner, round) {
