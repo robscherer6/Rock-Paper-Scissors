@@ -7,29 +7,33 @@ function getComputerChoice() {
 }
 
 //use prompt to get player choice
-function playerChoice () {
-  let input = prompt('Type Rock, Paper, or Scissors');
-  //console.log('Player: ', input);
-  while (input === null) {
-    input = prompt('Type Rock, Paper, or Scissors');
-  }
-  input =  input.toLowerCase();
-  //checking to make sure input is valid
-  let check = validateInput(input);
-  while (check === false) {
-    input = prompt('Type Rock, Paper, or Scissors. Spelling must be exact, but capitalization does not matter.');
-    while (input === null) {
-      input = prompt('Type Rock, Paper, or Scissors');
-    }
-    input = input.toLowerCase();
-    check = validateInput(input);
-  }
-  return input;
-}
+// function playerChoice () {
+//   let input = prompt('Type Rock, Paper, or Scissors');
+//   //console.log('Player: ', input);
+//   while (input === null) {
+//     input = prompt('Type Rock, Paper, or Scissors');
+//   }
+//   input =  input.toLowerCase();
+//   //checking to make sure input is valid
+//   let check = validateInput(input);
+//   while (check === false) {
+//     input = prompt('Type Rock, Paper, or Scissors. Spelling must be exact, but capitalization does not matter.');
+//     while (input === null) {
+//       input = prompt('Type Rock, Paper, or Scissors');
+//     }
+//     input = input.toLowerCase();
+//     check = validateInput(input);
+//   }
+//   return input;
+// }
+
+const btn = document.querySelector('button');
+btn.addEventListener('click', playRound)
 
 //play a single round of rps
 function playRound (round) {
-  const playerSelection = playerChoice();
+  // console.log(btn.innerText.toLowerCase());
+  const playerSelection = btn.innerText.toLowerCase();
   const computerSelection = getComputerChoice();
   //console.log('Computer: ', computerSelection);
   const winner = determineWinner(playerSelection, computerSelection);
@@ -39,9 +43,10 @@ function playRound (round) {
 }
 
 function game () {
-  for (var i = 1; i <= 5; i++) {
-    playRound(i);
-  }
+  // for (var i = 1; i <= 5; i++) {
+  //   playRound(i);
+  // }
+  playRound();
   document.querySelector('button').textContent = 'Play New Game';
   logWins();
 }
