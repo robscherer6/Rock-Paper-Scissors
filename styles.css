@@ -16,3 +16,7 @@ button:hover{
   background-color: green;
   color: white;
 }
+
+.reset {
+  display: none;
+}

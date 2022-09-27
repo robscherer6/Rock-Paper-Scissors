@@ -6,29 +6,36 @@ function getComputerChoice() {
   return choices[Math.floor(Math.random() * choices.length)];
 }
 
-//use prompt to get player choice
-// function playerChoice () {
-//   let input = prompt('Type Rock, Paper, or Scissors');
-//   //console.log('Player: ', input);
-//   while (input === null) {
-//     input = prompt('Type Rock, Paper, or Scissors');
-//   }
-//   input =  input.toLowerCase();
-//   //checking to make sure input is valid
-//   let check = validateInput(input);
-//   while (check === false) {
-//     input = prompt('Type Rock, Paper, or Scissors. Spelling must be exact, but capitalization does not matter.');
-//     while (input === null) {
-//       input = prompt('Type Rock, Paper, or Scissors');
-//     }
-//     input = input.toLowerCase();
-//     check = validateInput(input);
-//   }
-//   return input;
-// }
+let pick;
+const btn = document.querySelectorAll('button').forEach(button => {
+  button.addEventListener('click', () => {
+    pick = button.innerText;
+    console.log('PICK: ', pick)
+  });
+})
 
-const btn = document.querySelector('button');
-btn.addEventListener('click', playRound)
+//use prompt to get player choice
+function playerChoice () {
+  let input = pick;
+  //let input = prompt('Type Rock, Paper, or Scissors');
+  //console.log('Player: ', input);
+  // while (input === null) {
+  //   input = prompt('Type Rock, Paper, or Scissors');
+  // }
+  input =  input.toLowerCase();
+  //checking to make sure input is valid
+  let check = validateInput(input);
+  while (check === false) {
+    input = prompt('Type Rock, Paper, or Scissors. Spelling must be exact, but capitalization does not matter.');
+    while (input === null) {
+      input = prompt('Type Rock, Paper, or Scissors');
+    }
+    input = input.toLowerCase();
+    check = validateInput(input);
+  }
+  return input;
+}
+
 
 //play a single round of rps
 function playRound (round) {
