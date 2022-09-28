@@ -1,41 +1,23 @@
-const choices = ['rock', 'paper', 'scissors'];
 const winners = [];
+const choices = ['rock', 'paper', 'scissors'];
+
+//reset game
+function resetGame() {
+
+}
 
 //get a random choice from computer
 function getComputerChoice() {
   return choices[Math.floor(Math.random() * choices.length)];
 }
 
-let pick;
-const btn = document.querySelectorAll('button').forEach(button => {
-  button.addEventListener('click', () => {
-    pick = button.innerText;
-    console.log('PICK: ', pick)
-  });
-})
-
-//use prompt to get player choice
-function playerChoice () {
-  let input = pick;
-  //let input = prompt('Type Rock, Paper, or Scissors');
-  //console.log('Player: ', input);
-  // while (input === null) {
-  //   input = prompt('Type Rock, Paper, or Scissors');
-  // }
-  input =  input.toLowerCase();
-  //checking to make sure input is valid
-  let check = validateInput(input);
-  while (check === false) {
-    input = prompt('Type Rock, Paper, or Scissors. Spelling must be exact, but capitalization does not matter.');
-    while (input === null) {
-      input = prompt('Type Rock, Paper, or Scissors');
-    }
-    input = input.toLowerCase();
-    check = validateInput(input);
-  }
-  return input;
-}
-
+// let pick;
+// const btn = document.querySelectorAll('button').forEach(button => {
+//   button.addEventListener('click', () => {
+//     pick = button.innerText;
+//     console.log('PICK: ', pick)
+//   });
+// })
 
 //play a single round of rps
 function playRound (round) {
@@ -50,17 +32,8 @@ function playRound (round) {
 }
 
 function game () {
-  // for (var i = 1; i <= 5; i++) {
-  //   playRound(i);
-  // }
   playRound();
-  document.querySelector('button').textContent = 'Play New Game';
   logWins();
-}
-
-//validating input function
-function validateInput(choice) {
-  return choices.includes(choice);
 }
 
 function determineWinner (choiceP, choiceC) {
@@ -79,10 +52,6 @@ function logWins() {
   let playerWins = winners.filter(item => item === 'Player').length;
   let computerWins = winners.filter(item => item === 'Computer').length;
   let ties = winners.filter(item => item === 'Tie').length;
-  console.log('Results: ');
-  console.log('Player Wins: ', playerWins);
-  console.log('Computer Wins: ', computerWins);
-  console.log('Ties: ', ties);
 
   if (playerWins > computerWins) {
     alert('You win!!!');
@@ -101,42 +70,3 @@ function logRound(playerChoice, computerChoice, winner, round) {
   console.log('-------------------------------')
 }
 
-//initiate game/prompt upon page load
-//game();
-
-// function playRound (playerSelection, computerSelection) {
-
-//   playerSelection = playerSelection.toLowerCase();
-//   console.log('Player: ', playerSelection);
-//   let playerScore = 0;
-//   computerSelection = computerSelection.toLowerCase();
-//   console.log('Computer: ', computerSelection);
-//   let computerScore = 0;
-//   if (playerSelection === 'rock' && computerSelection === 'paper') {
-//     computerScore++;
-//   } else if (playerSelection === 'scissors' && computerSelection === 'rock') {
-//     computerScore++;
-//   } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
-//     computerScore++;
-//   } else if (playerSelection === computerSelection) {
-
-//   } else {
-//     playerScore++;
-//   }
-//   console.log('PlayerScore: ', playerScore);
-//   console.log('ComputerScore: ', computerScore);
-// }
-
-// const playerSelection = 'RocK';
-// const computerSelection = getComputerChoice();
-
-// //console.log(playRound(playerSelection, computerSelection));
-
-// function game () {
-//   //play five rounds of the game
-//   for (let i = 0; i < 5; i++) {
-//     playRound(playerSelection, computerSelection);
-//   }
-// }
-
-// console.log(game());
