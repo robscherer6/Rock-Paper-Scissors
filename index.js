@@ -1,8 +1,17 @@
-const winners = [];
+let winners = [];
 const choices = ['rock', 'paper', 'scissors'];
 
 //reset game
 function resetGame() {
+  winners = [];
+  document.querySelector('.ties').textContent = 'Ties: 0';
+  document.querySelector('.playerChoice').textContent = '';
+  document.querySelector('.playerScore').textContent = `Score: ${0}`;
+
+  document.querySelector('.computerChoice').textContent = '';
+  document.querySelector('.computerScore').textContent = `Score: ${0}`;
+
+  document.querySelector('.reset').style.display = 'none';
 
 }
 
@@ -32,7 +41,7 @@ function playRound (playerChoice) {
 }
 
 function displayEnd() {
-  let playersWins = winners.filter(item => item === 'Player').length;
+  let playerWins = winners.filter(item => item === 'Player').length;
   if (playerWins === 5) {
     document.querySelector('.winner').textContent = 'You won 5 times!!!';
   } else {
@@ -44,7 +53,17 @@ function displayEnd() {
 function displayRound(playerChoice, computerChoice, winner) {
   document.querySelector('.playerChoice').textContent = `You Chose: ${playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1)}`;
   document.querySelector('.computerChoice').textContent = `The Computer Chose: ${computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)}`;
-  document.querySelector('.winner').textContent = `Winner: ${winner}`;
+  displayRoundWinner(winner);
+}
+
+function displayRoundWinner(winner) {
+  if (winner === 'Player') {
+    document.querySelector('.winner').textContent = 'You win this round.';
+  } else if (winner === 'Computer') {
+    document.querySelector('.winner').textContent = 'The computer takes this round!!';
+  } else {
+    document.querySelector('.winner').textContent = 'This round is a tie.';
+  }
 }
 
 function tallyWins() {
