@@ -6,10 +6,10 @@ function resetGame() {
   winners = [];
   document.querySelector('.ties').textContent = 'Ties: 0';
   document.querySelector('.playerChoice').textContent = '';
-  document.querySelector('.playerScore').textContent = `Score: ${0}`;
+  document.querySelector('.playerScore').textContent = 'Score: 0';
 
   document.querySelector('.computerChoice').textContent = '';
-  document.querySelector('.computerScore').textContent = `Score: ${0}`;
+  document.querySelector('.computerScore').textContent = 'Score: 0';
 
   document.querySelector('.reset').style.display = 'none';
 
