@@ -17,7 +17,15 @@ function resetGame() {
 
 //get a random choice from computer
 function getComputerChoice() {
-  return choices[Math.floor(Math.random() * choices.length)];
+  let choice = choices[Math.floor(Math.random() * choices.length)];
+
+  document.querySelector(`.${choice}`).classList.add('active');
+
+  setTimeout(() => {
+    document.querySelector(`.${choice}`).classList.remove('active');
+  }, 700);
+
+  return choice;
 }
 
 
